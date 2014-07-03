@@ -36,7 +36,7 @@ namespace Coding_Challenge_2
                 tlsContainer.AddWord(triplet);
                 currentPosition += 1;
             }
-            tlsContainer.printTls(numberOfOccurrences);
+            tlsContainer.PrintTls(numberOfOccurrences);
         }
 
         private string GetTriplet(int currentPosition)

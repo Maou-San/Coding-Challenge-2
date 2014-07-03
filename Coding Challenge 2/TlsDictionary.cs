@@ -7,11 +7,10 @@ namespace Coding_Challenge_2
     {
         private readonly Dictionary<string, int> dictionar = new Dictionary<string, int>();
 
-        public Tuple<string, int>[] ArrayOfAllPairs
+        private Tuple<string, int>[] ArrayOfAllPairs
         {
             get
             {
-                //To be modified s.t. the implementation is not visible --- make what follows next into a private method
                 var i = 0;
                 var keyColl = dictionar.Keys;
                 var arrayOfTuples = new Tuple<string, int>[keyColl.Count];
@@ -25,7 +24,6 @@ namespace Coding_Challenge_2
                 return arrayOfTuples;
             }
         }
-
         public bool ContainsTls(string word)
         {
             return (IsTls(word) && dictionar.ContainsKey(word));
@@ -50,7 +48,7 @@ namespace Coding_Challenge_2
             return count;
         }
 
-        public void printTls(int numberOfOccurrences)
+        public void PrintTls(int numberOfOccurrences)
         {
             var arrayOfAllTuples = ArrayOfAllPairs;
             var lengthOfArray = arrayOfAllTuples.Length;
@@ -67,7 +65,6 @@ namespace Coding_Challenge_2
             }
             Console.Read();
         }
-
         private void AddTls(string word)
         {
             if (ContainsTls(word))
