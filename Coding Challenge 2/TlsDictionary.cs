@@ -2,6 +2,7 @@ namespace Coding_Challenge_2
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     internal class TlsDictionary
     {
@@ -31,12 +32,7 @@ namespace Coding_Challenge_2
         public void PrintTls(int numberOfOccurrences)
         {
             var tlsCollection = dictionary.Keys;
-            foreach (var tls in tlsCollection)
-            {
-                if (dictionary[tls] != numberOfOccurrences)
-                {
-                    continue;
-                }
+            foreach (var tls in tlsCollection.Where(tls => dictionary[tls] == numberOfOccurrences)) {
                 Console.Write(tls);
                 Console.Write(" ");
                 Console.Write(dictionary[tls]);
@@ -51,6 +47,18 @@ namespace Coding_Challenge_2
             return dictionary.ContainsKey(word);
         }
 
+        private static bool IsTls(string word)
+        {
+            return (word.Length == 3 && OnlyLowerLetters(word));
+        }
+        private static bool OnlyLowerLetters(string word)
+        {
+            return (IsLowerLetter(word[0]) && IsLowerLetter(word[1]) && IsLowerLetter(word[2]));
+        }
+        private static bool IsLowerLetter(char letter)
+        {
+            return ('a' <= letter && letter <= 'z');
+        }
         private void AddTls(string word)
         {
             if (ContainsTls(word))
@@ -61,21 +69,6 @@ namespace Coding_Challenge_2
             {
                 dictionary.Add(word, 1);
             }
-        }
-
-        private bool IsTls(string word)
-        {
-            return (word.Length == 3 && OnlyLowerLetters(word));
-        }
-
-        private bool OnlyLowerLetters(string word)
-        {
-            return (IsLowerLetter(word[0]) && IsLowerLetter(word[1]) && IsLowerLetter(word[2]));
-        }
-
-        private bool IsLowerLetter(char letter)
-        {
-            return ('a' <= letter && letter <= 'z');
         }
     }
 }
