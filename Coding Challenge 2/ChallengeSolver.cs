@@ -18,10 +18,12 @@ namespace Coding_Challenge_2
         {
             get { return File.ReadAllText(nameOfFile); }
         }
+
         public void ExecuteSolver()
         {
             Execute();
         }
+
         private void Execute()
         {
             var tlsContainer = new TlsDictionary();
@@ -30,7 +32,7 @@ namespace Coding_Challenge_2
             var currentPosition = 0;
             while (currentPosition < lengthOfFile - 2)
             {
-                var triplet = GetTriplet(currentPosition);
+                var triplet = GetTriplet(currentPosition).ToString();
                 tlsContainer.AddWord(triplet);
                 currentPosition += 1;
             }

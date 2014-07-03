@@ -5,16 +5,16 @@ namespace Coding_Challenge_2
 
     internal class TlsDictionary
     {
-        private readonly Dictionary<char[], int> dictionar = new Dictionary<char[], int>();
+        private readonly Dictionary<string, int> dictionar = new Dictionary<string, int>();
 
-        public Tuple<char[], int>[] ArrayOfAllPairs
+        public Tuple<string, int>[] ArrayOfAllPairs
         {
             get
             {
                 //To be modified s.t. the implementation is not visible --- make what follows next into a private method
                 var i = 0;
                 var keyColl = dictionar.Keys;
-                var arrayOfTuples = new Tuple<char[], int>[keyColl.Count];
+                var arrayOfTuples = new Tuple<string, int>[keyColl.Count];
                 foreach (var s in keyColl)
                 {
                     var count = 0;
@@ -26,12 +26,12 @@ namespace Coding_Challenge_2
             }
         }
 
-        public bool ContainsTls(char[] word)
+        public bool ContainsTls(string word)
         {
             return (IsTls(word) && dictionar.ContainsKey(word));
         }
 
-        public void AddWord(char[] word)
+        public void AddWord(string word)
         {
             if (IsTls(word))
             {
@@ -39,7 +39,7 @@ namespace Coding_Challenge_2
             }
         }
 
-        public int CountTls(char[] word)
+        public int CountTls(string word)
         {
             if (!ContainsTls(word))
             {
@@ -56,17 +56,17 @@ namespace Coding_Challenge_2
             var lengthOfArray = arrayOfAllTuples.Length;
             for (var i = 0; i < lengthOfArray; i++)
             {
-                if (arrayOfAllTuples[i].Item2 != numberOfOccurrences)
+                /*if (arrayOfAllTuples[i].Item2 != numberOfOccurrences)
                 {
                     continue;
-                }
+                }*/
                 Console.Write(arrayOfAllTuples[i].Item1);
                 Console.Write(" ");
             }
             Console.Read();
         }
 
-        private void AddTls(char[] word)
+        private void AddTls(string word)
         {
             if (ContainsTls(word))
             {
@@ -82,12 +82,12 @@ namespace Coding_Challenge_2
             }
         }
 
-        private bool IsTls(char[] word)
+        private bool IsTls(string word)
         {
             return (word.Length == 3 && OnlyLowerLetters(word));
         }
 
-        private bool OnlyLowerLetters(char[] word)
+        private bool OnlyLowerLetters(string word)
         {
             return (IsLowerLetter(word[0]) && IsLowerLetter(word[1]) && IsLowerLetter(word[2]));
         }
