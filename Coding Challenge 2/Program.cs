@@ -51,6 +51,22 @@
             return count;
         }
 
+        public void printTls(int numberOfOccurrences)
+        {
+            var arrayOfAllTuples = ArrayOfAllPairs;
+            var lengthOfArray = arrayOfAllTuples.Length;
+            for (var i = 0; i < lengthOfArray; i++)
+            {
+                if (arrayOfAllTuples[i].Item2 != numberOfOccurrences)
+                {
+                    continue;
+                }
+                Console.Write(arrayOfAllTuples[i].Item1);
+                Console.Write(" ");
+            }
+            Console.Read();
+        }
+
         private void AddTls(char[] word)
         {
             if (ContainsTls(word))
@@ -85,18 +101,19 @@
 
     internal class ChallengeSolver
     {
-        private readonly string textOfFile = "";
+        private readonly string nameOfFile = string.Empty;
         private readonly int numberOfOccurrences = 1;
+        private string textOfFile;
 
         public ChallengeSolver(string fileName, int minimal)
         {
-            textOfFile = fileName;
+            nameOfFile = fileName;
             numberOfOccurrences = minimal;
         }
 
         private string ReadFile
         {
-            get { return File.ReadAllText(textOfFile); }
+            get { return File.ReadAllText(nameOfFile); }
         }
 
         public void ExecuteSolver()
@@ -107,34 +124,37 @@
         private void Execute()
         {
             var tlsContainer = new TlsDictionary();
+            textOfFile = ReadFile.ToLower();
             var lengthOfFile = textOfFile.Length;
             var currentPosition = 0;
             while (currentPosition < lengthOfFile - 2)
             {
-                var triplet = getTriplet(currentPosition);
+                var triplet = GetTriplet(currentPosition);
                 tlsContainer.AddWord(triplet);
                 currentPosition += 1;
             }
-            printTls(numberOfOccurrences);
+            tlsContainer.printTls(numberOfOccurrences);
         }
 
-        private void printTls(int exactNumberOfOccurrences) {}
-
-        private char[] getTriplet(int currentPosition)
+        private char[] GetTriplet(int currentPosition)
         {
-            throw new NotImplementedException();
+            var threeLetters = new char[3];
+            threeLetters[0] = textOfFile[currentPosition];
+            threeLetters[1] = textOfFile[currentPosition + 1];
+            threeLetters[2] = textOfFile[currentPosition + 2];
+            return threeLetters;
         }
     }
 
     internal class Program
     {
-        public string FileName = @"E:\Github\Coding Challenge 2\tls.txt";
+        public static string FileName = @"E:\Github\Coding Challenge 2\Coding Challenge 2\tls.txt";
 
         private static void Main(string[] args)
         {
-            var NumberOfOccurrences = 1;
-            NumberOfOccurrences = Console.Read();
-            var solver = new ChallengeSolver(FileName, NumberOfOccurrences);
+            var numberOfOccurrences = 99;
+            //numberOfOccurrences = Console.Read();
+            var solver = new ChallengeSolver(FileName, numberOfOccurrences);
             solver.ExecuteSolver();
         }
     }
