@@ -56,12 +56,14 @@ namespace Coding_Challenge_2
             var lengthOfArray = arrayOfAllTuples.Length;
             for (var i = 0; i < lengthOfArray; i++)
             {
-                /*if (arrayOfAllTuples[i].Item2 != numberOfOccurrences)
+                if (arrayOfAllTuples[i].Item2 != numberOfOccurrences)
                 {
                     continue;
-                }*/
+                } //edit out if above
                 Console.Write(arrayOfAllTuples[i].Item1);
                 Console.Write(" ");
+                Console.Write(arrayOfAllTuples[i].Item2);
+                Console.Write("\n");
             }
             Console.Read();
         }
