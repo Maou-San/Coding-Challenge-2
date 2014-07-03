@@ -33,10 +33,6 @@ namespace Coding_Challenge_2
         //gets triplets from file
         private string GetTriplet(int currentPosition)
         {
-            var threeLetters = new char[3];
-            threeLetters[0] = textOfFile[currentPosition];
-            threeLetters[1] = textOfFile[currentPosition + 1];
-            threeLetters[2] = textOfFile[currentPosition + 2];
             return textOfFile.Substring(currentPosition, 3);
         }
     }
