@@ -15,21 +15,10 @@ namespace Coding_Challenge_2
             numberOfOccurrences = exactNumberOfOccurrences;
         }
 
-        private string ReadFile
-        {
-            get { return File.ReadAllText(nameOfFile); }
-        }
-
-        //solvers the problem
         public void ExecuteSolver()
         {
-            Execute();
-        }
-
-        private void Execute()
-        {
             var tlsContainer = new TlsDictionary();
-            textOfFile = ReadFile.ToLower();
+            textOfFile = File.ReadAllText(nameOfFile).ToLower();
             var lengthOfFile = textOfFile.Length;
             var currentPosition = 0;
             while (currentPosition < lengthOfFile - 2)
@@ -48,7 +37,7 @@ namespace Coding_Challenge_2
             threeLetters[0] = textOfFile[currentPosition];
             threeLetters[1] = textOfFile[currentPosition + 1];
             threeLetters[2] = textOfFile[currentPosition + 2];
-            return new string(threeLetters);
+            return textOfFile.Substring(currentPosition, 3);
         }
     }
 }

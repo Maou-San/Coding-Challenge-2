@@ -9,7 +9,7 @@
         private static void Main(string[] args)
         {
             var numberOfOccurrences = 99;
-            int.TryParse(Console.ReadLine(), out numberOfOccurrences);
+            numberOfOccurrences = int.Parse(Console.ReadLine());
             var solver = new ChallengeSolver(FileName, numberOfOccurrences);
             solver.ExecuteSolver();
         }

@@ -5,7 +5,7 @@ namespace Coding_Challenge_2
 
     internal class TlsDictionary
     {
-        private readonly Dictionary<string, int> dictionar = new Dictionary<string, int>();
+        private readonly Dictionary<string, int> dictionary = new Dictionary<string, int>();
 
         //Creates an array of all pairs (made from tls and number of occurrences)
         private Tuple<string, int>[] ArrayOfAllPairs
@@ -13,12 +13,12 @@ namespace Coding_Challenge_2
             get
             {
                 var i = 0;
-                var keyColl = dictionar.Keys;
+                var keyColl = dictionary.Keys;
                 var arrayOfTuples = new Tuple<string, int>[keyColl.Count];
                 foreach (var s in keyColl)
                 {
                     var count = 0;
-                    dictionar.TryGetValue(s, out count);
+                    dictionary.TryGetValue(s, out count);
                     arrayOfTuples[i] = Tuple.Create(s, count);
                     i += 1;
                 }
@@ -42,7 +42,7 @@ namespace Coding_Challenge_2
                 return 0;
             }
             var count = 0;
-            dictionar.TryGetValue(word, out count);
+            dictionary.TryGetValue(word, out count);
             return count;
         }
 
@@ -68,22 +68,18 @@ namespace Coding_Challenge_2
         //checks whether a string is in the tls dictionary
         public bool ContainsTls(string word)
         {
-            return dictionar.ContainsKey(word);
+            return dictionary.ContainsKey(word);
         }
 
         private void AddTls(string word)
         {
             if (ContainsTls(word))
             {
-                var count = 0;
-                dictionar.TryGetValue(word, out count);
-                count += 1;
-                dictionar.Remove(word);
-                dictionar.Add(word, count);
+                dictionary[word] += 1;
             }
             else
             {
-                dictionar.Add(word, 1);
+                dictionary.Add(word, 1);
             }
         }
 
