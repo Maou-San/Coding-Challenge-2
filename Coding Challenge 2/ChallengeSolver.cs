@@ -8,10 +8,11 @@ namespace Coding_Challenge_2
         private readonly int numberOfOccurrences = 1;
         private string textOfFile;
 
-        public ChallengeSolver(string fileName, int minimal)
+        //solves the problem for the the corresponding file and exact number of occurrences
+        public ChallengeSolver(string fileName, int exactNumberOfOccurrences)
         {
             nameOfFile = fileName;
-            numberOfOccurrences = minimal;
+            numberOfOccurrences = exactNumberOfOccurrences;
         }
 
         private string ReadFile
@@ -19,6 +20,7 @@ namespace Coding_Challenge_2
             get { return File.ReadAllText(nameOfFile); }
         }
 
+        //solvers the problem
         public void ExecuteSolver()
         {
             Execute();
@@ -39,6 +41,7 @@ namespace Coding_Challenge_2
             tlsContainer.PrintTls(numberOfOccurrences);
         }
 
+        //gets triplets from file
         private string GetTriplet(int currentPosition)
         {
             var threeLetters = new char[3];

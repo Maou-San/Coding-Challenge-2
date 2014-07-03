@@ -7,6 +7,7 @@ namespace Coding_Challenge_2
     {
         private readonly Dictionary<string, int> dictionar = new Dictionary<string, int>();
 
+        //Creates an array of all pairs (made from tls and number of occurrences)
         private Tuple<string, int>[] ArrayOfAllPairs
         {
             get
@@ -24,11 +25,8 @@ namespace Coding_Challenge_2
                 return arrayOfTuples;
             }
         }
-        public bool ContainsTls(string word)
-        {
-            return (IsTls(word) && dictionar.ContainsKey(word));
-        }
 
+        //adds a word to the dictionary if it is a tls
         public void AddWord(string word)
         {
             if (IsTls(word))
@@ -48,6 +46,7 @@ namespace Coding_Challenge_2
             return count;
         }
 
+        //prints the tls with the exact numberOfOccurrences
         public void PrintTls(int numberOfOccurrences)
         {
             var arrayOfAllTuples = ArrayOfAllPairs;
@@ -57,7 +56,7 @@ namespace Coding_Challenge_2
                 if (arrayOfAllTuples[i].Item2 != numberOfOccurrences)
                 {
                     continue;
-                } //edit out if above
+                }
                 Console.Write(arrayOfAllTuples[i].Item1);
                 Console.Write(" ");
                 Console.Write(arrayOfAllTuples[i].Item2);
@@ -65,6 +64,13 @@ namespace Coding_Challenge_2
             }
             Console.Read();
         }
+
+        //checks whether a string is in the tls dictionary
+        public bool ContainsTls(string word)
+        {
+            return dictionar.ContainsKey(word);
+        }
+
         private void AddTls(string word)
         {
             if (ContainsTls(word))
