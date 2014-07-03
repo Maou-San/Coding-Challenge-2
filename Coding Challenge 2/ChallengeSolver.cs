@@ -32,20 +32,20 @@ namespace Coding_Challenge_2
             var currentPosition = 0;
             while (currentPosition < lengthOfFile - 2)
             {
-                var triplet = GetTriplet(currentPosition).ToString();
+                var triplet = GetTriplet(currentPosition);
                 tlsContainer.AddWord(triplet);
                 currentPosition += 1;
             }
             tlsContainer.printTls(numberOfOccurrences);
         }
 
-        private char[] GetTriplet(int currentPosition)
+        private string GetTriplet(int currentPosition)
         {
             var threeLetters = new char[3];
             threeLetters[0] = textOfFile[currentPosition];
             threeLetters[1] = textOfFile[currentPosition + 1];
             threeLetters[2] = textOfFile[currentPosition + 2];
-            return threeLetters;
+            return new string(threeLetters);
         }
     }
 }
